@@ -6,7 +6,7 @@
 
 void f(char x, int i) {
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    std::osyncstream(std::cout) << "Action " << i << " of set " << x << " completed.\n";
+    std::osyncstream(std::cout) << "З набору " << x << " виконано дію " << i << ".\n";
 }
 
 void run(char x, int first, int last, std::latch& done) {
@@ -17,7 +17,7 @@ void run(char x, int first, int last, std::latch& done) {
 }
 
 int main() {
-    std::osyncstream(std::cout) << "Computation started.\n";
+    std::osyncstream(std::cout) << "Обчислення розпочато.\n";
     auto start = std::chrono::steady_clock::now();
 
     std::latch before_j(9 + 8); // a + d
@@ -72,5 +72,5 @@ int main() {
     t5.join();
 
     std::chrono::duration<double> elapsed = std::chrono::steady_clock::now() - start;
-    std::osyncstream(std::cout) << "Computation finished. Duration: " << elapsed.count() << " seconds.\n";
+    std::osyncstream(std::cout) << "Обчислення завершено. Тривалість обчислення " << elapsed.count() << " секунд.\n";
 }
